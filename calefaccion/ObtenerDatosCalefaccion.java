@@ -3,6 +3,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ObtenerDatosCalefaccion {
 
@@ -16,9 +20,22 @@ public class ObtenerDatosCalefaccion {
         String[] dias = sacarLista(json, "time");
         String[] temperaturas = sacarLista(json, "temperature_2m_mean");
 
+        List<String> lineas = new ArrayList<>();
+        lineas.add("Día,Temperatura media (°C),Consumo de calefacción (kWh)");
         for (int i = 0; i < dias.length; i++) {
-            System.out.println(dias[i] + " -> " + temperaturas[i] + " °C");
+            double temperatura = Double.parseDouble(temperaturas[i]);
+            lineas.add(dias[i] + "," + temperatura + "," + calcularConsumo(temperatura));
         }
+
+        Files.write(Paths.get("calefaccion/datos_calefaccion.csv"), lineas);
+        System.out.println("CSV generado: datos_calefaccion.csv");
+    }
+
+    static double calcularConsumo(double temperatura) {
+        if (temperatura <= 15) {
+            return Math.round((15 - temperatura) * 100) / 10.0;
+        }
+        return 0;
     }
 
     static String[] sacarLista(String json, String clave) {
