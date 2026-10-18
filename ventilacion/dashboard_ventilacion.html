@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de ventilación</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="datos_ventilacion.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center;">Velocidad media del viento diaria y uso estimado de ventilación en Madrid - próximos 7 días</h1>
+    
+    <div id="grafica" style="width: 900px; height: 700px; margin: auto;"></div>
+    
+    <script>
+        echarts.init(document.getElementById('grafica')).setOption({
+            title: [
+                { 
+                    text: 'Velocidad media del viento diaria', 
+                    left: 'center', 
+                    top: '3%' 
+                },
+                { 
+                    text: 'Uso estimado de ventilación', 
+                    left: 'center', 
+                    top: '53%' 
+                }
+            ],
+            tooltip: { 
+                trigger: 'axis' 
+            },
+            grid: [
+                { 
+                    left: 70, 
+                    right: 40, 
+                    top: '10%', 
+                    height: '30%' 
+                },
+                { 
+                    left: 70, 
+                    right: 40, 
+                    top: '62%', 
+                    height: '28%' 
+                }
+            ],
+            xAxis: [
+                { 
+                    type: 'category', 
+                    data: dias, 
+                    gridIndex: 0, 
+                    name: 'Día', 
+                    nameLocation: 'middle', 
+                    nameGap: 30 
+                },
+                { 
+                    type: 'category', 
+                    data: dias, 
+                    gridIndex: 1, 
+                    name: 'Día', 
+                    nameLocation: 'middle', 
+                    nameGap: 30 
+                }
+            ],
+            yAxis: [
+                { 
+                    type: 'value', 
+                    gridIndex: 0, 
+                    name: 'Velocidad (km/h)', 
+                    nameLocation: 'middle', 
+                    nameGap: 45 
+                },
+                { 
+                    type: 'value', 
+                    gridIndex: 1, 
+                    name: 'Uso (kWh)', 
+                    nameLocation: 'middle', 
+                    nameGap: 45 
+                }
+            ],
+            series: [
+                { 
+                    type: 'line', 
+                    data: velocidades, 
+                    xAxisIndex: 0, 
+                    yAxisIndex: 0 
+                },
+                { 
+                    type: 'bar', 
+                    data: usos, 
+                    xAxisIndex: 1, 
+                    yAxisIndex: 1 
+                }
+            ]
+        });
+    </script>
+</body>
+</html>
