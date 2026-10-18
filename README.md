@@ -18,3 +18,16 @@ Sigue estos pasos en orden:
 3. Abre el archivo `dashboard_calefaccion.html` en el navegador.
 
 **Importante:** estos pasos deben repetirse cada día para actualizar los datos del dashboard. Si no se ejecutan de nuevo, los datos estarán desactualizados.
+
+
+## Cómo ejecutar el paquete `ventilacion`
+
+Sigue estos pasos en orden:
+
+1. Ejecuta la clase `ObtenerDatosVentilacion` para generar el archivo `datos_ventilacion.csv` y espera a que se genere correctamente.
+2. Ejecuta la clase `GenerarDatosVentilacion` para generar el archivo `datos_ventilacion.js` y espera a que se genere correctamente.
+3. Abre el archivo `dashboard_ventilacion.html` en el navegador.
+
+**Importante:** estos pasos deben repetirse cada día para actualizar los datos del dashboard. Si no se ejecutan de nuevo, los datos estarán desactualizados.
+
+
