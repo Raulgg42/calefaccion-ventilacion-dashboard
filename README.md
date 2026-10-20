@@ -9,6 +9,10 @@ Dashboards web con ECharts que estiman el consumo de calefacción y ventilación
 
 No hace falta ninguna clave de API: Open-Meteo es gratuita y no pide registro.
 
+## Directorio de ejecución
+
+Las clases deben ejecutarse desde la carpeta raíz del proyecto (la que contiene las carpetas calefaccion y ventilacion), porque usan rutas relativas como calefaccion/datos_calefaccion.csv. Si usas un IDE, configura esa carpeta raíz como directorio de trabajo.
+
 ## Cómo ejecutar el paquete `calefaccion`
 
 Sigue estos pasos en orden:
